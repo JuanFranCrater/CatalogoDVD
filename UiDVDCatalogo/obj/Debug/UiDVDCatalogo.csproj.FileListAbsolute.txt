@@ -1,0 +1,27 @@
+C:\Users\dprimenko\Documents\git\Relacion 9\UiDVDCatalogo\bin\Debug\UiDVDCatalogo.exe.config
+C:\Users\dprimenko\Documents\git\Relacion 9\UiDVDCatalogo\bin\Debug\UiDVDCatalogo.exe
+C:\Users\dprimenko\Documents\git\Relacion 9\UiDVDCatalogo\bin\Debug\UiDVDCatalogo.pdb
+C:\Users\dprimenko\Documents\git\Relacion 9\UiDVDCatalogo\obj\Debug\UiDVDCatalogo.csprojResolveAssemblyReference.cache
+C:\Users\dprimenko\Documents\git\Relacion 9\UiDVDCatalogo\obj\Debug\MainWindow.baml
+C:\Users\dprimenko\Documents\git\Relacion 9\UiDVDCatalogo\obj\Debug\MainWindow.g.cs
+C:\Users\dprimenko\Documents\git\Relacion 9\UiDVDCatalogo\obj\Debug\App.g.cs
+C:\Users\dprimenko\Documents\git\Relacion 9\UiDVDCatalogo\obj\Debug\UiDVDCatalogo_MarkupCompile.cache
+C:\Users\dprimenko\Documents\git\Relacion 9\UiDVDCatalogo\obj\Debug\UiDVDCatalogo.g.resources
+C:\Users\dprimenko\Documents\git\Relacion 9\UiDVDCatalogo\obj\Debug\UiDVDCatalogo.Properties.Resources.resources
+C:\Users\dprimenko\Documents\git\Relacion 9\UiDVDCatalogo\obj\Debug\UiDVDCatalogo.csproj.GenerateResource.Cache
+C:\Users\dprimenko\Documents\git\Relacion 9\UiDVDCatalogo\obj\Debug\UiDVDCatalogo.exe
+C:\Users\dprimenko\Documents\git\Relacion 9\UiDVDCatalogo\obj\Debug\UiDVDCatalogo.pdb
+C:\Users\dprimenko\Documents\git\CatalogoDVD\UiDVDCatalogo\bin\Debug\UiDVDCatalogo.exe.config
+C:\Users\dprimenko\Documents\git\CatalogoDVD\UiDVDCatalogo\obj\Debug\UiDVDCatalogo.exe
+C:\Users\dprimenko\Documents\git\CatalogoDVD\UiDVDCatalogo\obj\Debug\UiDVDCatalogo.pdb
+C:\Users\dprimenko\Documents\git\CatalogoDVD\UiDVDCatalogo\bin\Debug\UiDVDCatalogo.exe
+C:\Users\dprimenko\Documents\git\CatalogoDVD\UiDVDCatalogo\bin\Debug\UiDVDCatalogo.pdb
+C:\Users\dprimenko\Documents\git\CatalogoDVD\UiDVDCatalogo\bin\Debug\MySql.Data.dll
+C:\Users\dprimenko\Documents\git\CatalogoDVD\UiDVDCatalogo\obj\Debug\UiDVDCatalogo.csprojResolveAssemblyReference.cache
+C:\Users\dprimenko\Documents\git\CatalogoDVD\UiDVDCatalogo\obj\Debug\MainWindow.baml
+C:\Users\dprimenko\Documents\git\CatalogoDVD\UiDVDCatalogo\obj\Debug\MainWindow.g.cs
+C:\Users\dprimenko\Documents\git\CatalogoDVD\UiDVDCatalogo\obj\Debug\App.g.cs
+C:\Users\dprimenko\Documents\git\CatalogoDVD\UiDVDCatalogo\obj\Debug\UiDVDCatalogo_MarkupCompile.cache
+C:\Users\dprimenko\Documents\git\CatalogoDVD\UiDVDCatalogo\obj\Debug\UiDVDCatalogo.g.resources
+C:\Users\dprimenko\Documents\git\CatalogoDVD\UiDVDCatalogo\obj\Debug\UiDVDCatalogo.Properties.Resources.resources
+C:\Users\dprimenko\Documents\git\CatalogoDVD\UiDVDCatalogo\obj\Debug\UiDVDCatalogo.csproj.GenerateResource.Cache
