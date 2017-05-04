@@ -24,12 +24,8 @@ namespace UiDVDCatalogo
     /// </summary>
     public partial class MainWindow : Window
     {
-        ObservableCollection<Dvd> resultado = new ObservableCollection<Dvd>();
-        DaoDvdMysql dao = new DaoDvdMysql();
-        static string host = "localhost";
-        static string db = "catalogo";
-        static string usr = "usr_catalogo";
-        static string pwd = "123456789";
+        
+        
         public MainWindow()
         {
             InitializeComponent();
@@ -37,53 +33,53 @@ namespace UiDVDCatalogo
 
         private void Conectar(object sender, RoutedEventArgs e)
         {
-            if (!dao.Conectado())
-            {
-                if (dao.Conectar(host, db, usr, pwd))
-                {
-                    menuEstado.Header = "Conectado";
-                    btnConectarDesconectar.Content = "Desconectar";
-                    btnConectarDesconectar.Click += Desconectar;
-                    btnListar.IsEnabled = true;
-                }
-            }
+        //    if (!dao.Conectado())
+        //    {
+        //        if (dao.Conectar(host, db, usr, pwd))
+        //        {
+        //            menuEstado.Header = "Conectado";
+        //            btnConectarDesconectar.Content = "Desconectar";
+        //            btnConectarDesconectar.Click += Desconectar;
+        //            btnListar.IsEnabled = true;
+        //        }
+        //    }
         }
 
         private void Desconectar(object sender, RoutedEventArgs e)
         {
-            if (dao.Conectado())
-            {
-                if (dao.Desconectar())
-                { menuEstado.Header = "Desconectado";
-                btnConectarDesconectar.Content = "Conectar";
-                btnConectarDesconectar.Click += Conectar;
-                btnListar.IsEnabled = false;
-                }
-            }
+        //    if (dao.Conectado())
+        //    {
+        //        if (dao.Desconectar())
+        //        { menuEstado.Header = "Desconectado";
+        //        btnConectarDesconectar.Content = "Conectar";
+        //        btnConectarDesconectar.Click += Conectar;
+        //        btnListar.IsEnabled = false;
+        //        }
+        //    }
         }
 
         private void ListarDVD(object sender, RoutedEventArgs e)
         {
-            if (dao.Conectado())
-            {
-                dgtabla.Items.Clear();
-                resultado = dao.Seleccionar(null);
-                for (int i = 0; i < resultado.Count; i++)
-                {
-                    dgtabla.Items.Add(resultado[i]);
-                }
-                dgtabla.Visibility = Visibility.Visible;
-            }
-            
+        //    if (dao.Conectado())
+        //    {
+        //        dgtabla.Items.Clear();
+        //        resultado = dao.Seleccionar(null);
+        //        for (int i = 0; i < resultado.Count; i++)
+        //        {
+        //            dgtabla.Items.Add(resultado[i]);
+        //        }
+        //        dgtabla.Visibility = Visibility.Visible;
         }
-        /// <summary>
-        /// Cancela el intento de editar en app
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+            
+        //}
+        ///// <summary>
+        ///// Cancela el intento de editar en app
+        ///// </summary>
+        ///// <param name="sender"></param>
+        ///// <param name="e"></param>
         private void IntentoEditar(object sender, DataGridBeginningEditEventArgs e)
         {
-            e.Cancel = true;
+        //    e.Cancel = true;
         }
     }
 }

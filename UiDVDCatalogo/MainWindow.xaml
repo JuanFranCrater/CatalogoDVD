@@ -1,10 +1,20 @@
-﻿<Window x:Class="UiDVDCatalogo.MainWindow"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="400" Width="750">
+        xmlns:CatalogoDVD="clr-namespace:CatalogoDVD" xmlns:local="clr-namespace:UiDVDCatalogo" x:Class="UiDVDCatalogo.MainWindow"
+        Title="MainWindow" Height="428" Width="750">
+
+
+
+    <Window.DataContext>
+        <local:CatalogoVM/>
+    </Window.DataContext>
+
+
+
     <StackPanel>
         <Menu Height="30" >
-            <MenuItem Name="menuEstado" Header="Desconectado" IsEnabled="False"/>
+            <MenuItem x:Name="menuEstado" Header="Desconectado" IsEnabled="False"/>
             <MenuItem Header="Menú">
                 <MenuItem Header="Conectar" Click="Conectar"/>
                 <MenuItem Header="Desconectar" Click="Desconectar"/>
@@ -14,22 +24,25 @@
             </MenuItem>
         </Menu>
         <Grid Height="332">
+            <RadioButton Margin="10,41,657,269" Content="SQLite" IsChecked="True" />
             <DataGrid x:Name="dgtabla"   AutoGenerateColumns="False" HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="100,10,0,0" BeginningEdit="IntentoEditar">
                 <DataGrid.Columns >
-                    <DataGridTextColumn  Header="Codigo" Binding="{Binding Path=Codigo}" MinWidth="50" />
-                    <DataGridTextColumn Header="Titulo" Binding="{Binding Path=Titulo}" MinWidth="50" />
-                    <DataGridTextColumn Header="Artista" Binding="{Binding Path=Artista}" MinWidth="50" />
-                    <DataGridTextColumn Header="Pais" Binding="{Binding Path=Pais}" MinWidth="50" />
-                    <DataGridTextColumn Header="Compañia" Binding="{Binding Path=Compania}" MinWidth="50" />
-                    <DataGridTextColumn Header="Precio" Binding="{Binding Path=Precio}" MinWidth="50" />
-                    <DataGridTextColumn Header="Año" Binding="{Binding Path=Anio}" MinWidth="50" />
+                    <DataGridTextColumn  Header="Codigo" Binding="{Binding Codigo}" MinWidth="50" />
+                    <DataGridTextColumn Header="Titulo" Binding="{Binding Titulo}" MinWidth="50" />
+                    <DataGridTextColumn Header="Artista" Binding="{Binding Artista}" MinWidth="50" />
+                    <DataGridTextColumn Header="Pais" Binding="{Binding Pais}" MinWidth="50" />
+                    <DataGridTextColumn Header="Compañia" Binding="{Binding Compania}" MinWidth="50" />
+                    <DataGridTextColumn Header="Precio" Binding="{Binding Precio}" MinWidth="50" />
+                    <DataGridTextColumn Header="Año" Binding="{Binding Anio}" MinWidth="50" />
                 </DataGrid.Columns>
             </DataGrid>
             <Button x:Name="btnConectarDesconectar" Content="Conectar" HorizontalAlignment="Left" Margin="10,14,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.382,0.361" Click="Conectar"/>
-            <Button IsEnabled="False" x:Name="btnListar" Content="Listar DVDs" HorizontalAlignment="Left" Margin="10,68,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.382,0.361" Click="ListarDVD"/>
+            <Button IsEnabled="False" x:Name="btnListar" Content="Listar DVDs" HorizontalAlignment="Left" Margin="10,83,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.382,0.361" Click="ListarDVD"/>
+            <RadioButton Margin="10,63,657,247" Content="Mysql" IsChecked="True" />
 
 
         </Grid>
+        <Label x:Name="lbnEstado"  Content="NO DATA" Background="{Binding ColorConectar, Mode=OneWay}" Height="31"/>
     </StackPanel>
 
 </Window>

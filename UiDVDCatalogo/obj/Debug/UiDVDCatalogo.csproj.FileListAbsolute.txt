@@ -25,3 +25,5 @@ C:\Users\dprimenko\Documents\git\CatalogoDVD\UiDVDCatalogo\obj\Debug\UiDVDCatalo
 C:\Users\dprimenko\Documents\git\CatalogoDVD\UiDVDCatalogo\obj\Debug\UiDVDCatalogo.g.resources
 C:\Users\dprimenko\Documents\git\CatalogoDVD\UiDVDCatalogo\obj\Debug\UiDVDCatalogo.Properties.Resources.resources
 C:\Users\dprimenko\Documents\git\CatalogoDVD\UiDVDCatalogo\obj\Debug\UiDVDCatalogo.csproj.GenerateResource.Cache
+C:\Users\dprimenko\Documents\git\CatalogoDVD\UiDVDCatalogo\obj\Debug\UiDVDCatalogo_MarkupCompile.lref
+C:\Users\dprimenko\Documents\git\CatalogoDVD\UiDVDCatalogo\obj\Debug\GeneratedInternalTypeHelper.g.cs
