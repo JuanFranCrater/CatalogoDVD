@@ -16,7 +16,6 @@ C:\Users\dprimenko\Documents\git\CatalogoDVD\UiDVDCatalogo\obj\Debug\UiDVDCatalo
 C:\Users\dprimenko\Documents\git\CatalogoDVD\UiDVDCatalogo\obj\Debug\UiDVDCatalogo.pdb
 C:\Users\dprimenko\Documents\git\CatalogoDVD\UiDVDCatalogo\bin\Debug\UiDVDCatalogo.exe
 C:\Users\dprimenko\Documents\git\CatalogoDVD\UiDVDCatalogo\bin\Debug\UiDVDCatalogo.pdb
-C:\Users\dprimenko\Documents\git\CatalogoDVD\UiDVDCatalogo\bin\Debug\MySql.Data.dll
 C:\Users\dprimenko\Documents\git\CatalogoDVD\UiDVDCatalogo\obj\Debug\UiDVDCatalogo.csprojResolveAssemblyReference.cache
 C:\Users\dprimenko\Documents\git\CatalogoDVD\UiDVDCatalogo\obj\Debug\MainWindow.baml
 C:\Users\dprimenko\Documents\git\CatalogoDVD\UiDVDCatalogo\obj\Debug\MainWindow.g.cs
@@ -27,3 +26,6 @@ C:\Users\dprimenko\Documents\git\CatalogoDVD\UiDVDCatalogo\obj\Debug\UiDVDCatalo
 C:\Users\dprimenko\Documents\git\CatalogoDVD\UiDVDCatalogo\obj\Debug\UiDVDCatalogo.csproj.GenerateResource.Cache
 C:\Users\dprimenko\Documents\git\CatalogoDVD\UiDVDCatalogo\obj\Debug\UiDVDCatalogo_MarkupCompile.lref
 C:\Users\dprimenko\Documents\git\CatalogoDVD\UiDVDCatalogo\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\dprimenko\Documents\git\CatalogoDVD\UiDVDCatalogo\bin\Debug\System.Data.SQLite.dll
+C:\Users\dprimenko\Documents\git\CatalogoDVD\UiDVDCatalogo\bin\Debug\System.Data.SQLite.pdb
+C:\Users\dprimenko\Documents\git\CatalogoDVD\UiDVDCatalogo\bin\Debug\System.Data.SQLite.xml

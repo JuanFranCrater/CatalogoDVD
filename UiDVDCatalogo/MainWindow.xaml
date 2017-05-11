@@ -17,32 +17,24 @@
             <MenuItem x:Name="menuEstado" Header="Desconectado" IsEnabled="False"/>
             <MenuItem Header="Menú">
                 <MenuItem Header="Conectar" Click="Conectar"/>
-                <MenuItem Header="Desconectar" Click="Desconectar"/>
+                <MenuItem Header="Desconectar" Click="Desconectar" Command="{Binding DesconectarBD_Click, Mode=OneWay}"/>
                 <MenuItem Header="Listar DVD" Click="ListarDVD"/>
                 <Separator/>
                 <MenuItem Header="Salir"/>
             </MenuItem>
         </Menu>
         <Grid Height="332">
-            <RadioButton Margin="10,41,657,269" Content="SQLite" IsChecked="True" />
-            <DataGrid x:Name="dgtabla"   AutoGenerateColumns="False" HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="100,10,0,0" BeginningEdit="IntentoEditar">
-                <DataGrid.Columns >
-                    <DataGridTextColumn  Header="Codigo" Binding="{Binding Codigo}" MinWidth="50" />
-                    <DataGridTextColumn Header="Titulo" Binding="{Binding Titulo}" MinWidth="50" />
-                    <DataGridTextColumn Header="Artista" Binding="{Binding Artista}" MinWidth="50" />
-                    <DataGridTextColumn Header="Pais" Binding="{Binding Pais}" MinWidth="50" />
-                    <DataGridTextColumn Header="Compañia" Binding="{Binding Compania}" MinWidth="50" />
-                    <DataGridTextColumn Header="Precio" Binding="{Binding Precio}" MinWidth="50" />
-                    <DataGridTextColumn Header="Año" Binding="{Binding Anio}" MinWidth="50" />
-                </DataGrid.Columns>
+            <RadioButton GroupName="bd" Margin="10,0,657,269" Content="SQLite" IsChecked="False" Height="22" VerticalAlignment="Bottom"  />
+            <DataGrid x:Name="dgtabla" Width="600" Height="300"  AutoGenerateColumns="False" HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="100,10,0,0" BeginningEdit="IntentoEditar" ItemsSource="{Binding Listado}">
+              
             </DataGrid>
-            <Button x:Name="btnConectarDesconectar" Content="Conectar" HorizontalAlignment="Left" Margin="10,14,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.382,0.361" Click="Conectar"/>
-            <Button IsEnabled="False" x:Name="btnListar" Content="Listar DVDs" HorizontalAlignment="Left" Margin="10,83,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.382,0.361" Click="ListarDVD"/>
-            <RadioButton Margin="10,63,657,247" Content="Mysql" IsChecked="True" />
+            <Button x:Name="btnConectarDesconectar" Content="Conectar" HorizontalAlignment="Left" Margin="10,14,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.382,0.361" Click="Conectar" Command="{Binding ConectarBD_Click, Mode=OneWay}"/>
+            <Button x:Name="btnListar" Content="Listar DVDs" HorizontalAlignment="Left" Margin="10,83,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.382,0.361" Click="ListarDVD" IsEnabled="{Binding Conectado, Mode=OneWay}" Command="{Binding LeerTodosDVD_Click, Mode=OneWay}"/>
+            <RadioButton  GroupName="bd" Margin="10,63,657,247" Content="Mysql" IsChecked="{Binding TipoConexion}"  />
 
 
         </Grid>
-        <Label x:Name="lbnEstado"  Content="NO DATA" Background="{Binding ColorConectar, Mode=OneWay}" Height="31"/>
+        <Label x:Name="lbnEstado"  Content="{Binding Mensaje}" Background="{Binding ColorConectar, Mode=OneWay}" Height="31"/>
     </StackPanel>
 
 </Window>

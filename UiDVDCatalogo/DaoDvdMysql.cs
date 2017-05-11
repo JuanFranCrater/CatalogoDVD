@@ -7,10 +7,11 @@ using MySql.Data.MySqlClient;
 //____________________________
 using System.Collections.ObjectModel;
 using System.Data;
+using UiDVDCatalogo;
 
-namespace CatalogoDVD
+namespace CatalogoDVD 
 {
-    class DaoDvdMysql
+    class DaoDvdMysql : IDao
     {
         public MySqlConnection conexion;
 
@@ -88,7 +89,7 @@ namespace CatalogoDVD
         public ObservableCollection<Dvd> Seleccionar(string codigo)
         {
             ObservableCollection<Dvd> resultado = new ObservableCollection<Dvd>();
-            int resul;
+   
             string orden;
             if (codigo == null)
             {

@@ -7,24 +7,19 @@ using System.Threading.Tasks;
 //----------------
 using CatalogoDVD;
 using System.Collections.ObjectModel;
-
+using System.Windows.Input;
 
 namespace UiDVDCatalogo
 {
     class CatalogoVM : INotifyPropertyChanged
     {
         #region Campos
-        DaoDvdMysql _dao;
+        IDao _dao;
         bool _tipoConexion = true; //MySql - true , Sqlite -false
-
-       
 
         ObservableCollection<Dvd> _listado;
 
-
         string _mensaje;
-
-        
 
         static string host = "localhost";
         static string db = "catalogo";
@@ -39,43 +34,64 @@ namespace UiDVDCatalogo
             set
             {
                 if (_tipoConexion != value)
+                {
                     _tipoConexion = value;
-                NotificarCambioDePropiedad("TipoConexion");
-                    }
+                    NotificarCambioDePropiedad("TipoConexion");
+                }
+            }
         }
 
         public string Mensaje
         {
             get { return _mensaje; }
-            set { _mensaje = value; }
+            set
+            {
+                if (_mensaje != value)
+                {
+                    _mensaje = value;
+                    NotificarCambioDePropiedad("Mensaje");
+                }
+            }
         }
         public ObservableCollection<Dvd> Listado
         {
             get { return _listado; }
-            set { _listado = value; }
+            set {
+                if (_listado != value)
+                {
+                    _listado = value;
+                    NotificarCambioDePropiedad("Listado");
+                }
+            }
         }
+        
         public bool Conectado
         {
-            get 
+            get
             {
                 if (_dao == null)
-                   return false;
+                    return false;
                 else
                 {
                     return _dao.Conectado();
+                  
                 }
             }
         }
 
         public string ColorConectar
         {
-            get 
-            
+            get
             {
                 if (Conectado)
                     return "green";
                 else
                     return "red";
+            }
+            set
+            {
+                NotificarCambioDePropiedad("ColorConectar");
+            
             }
         }
 
@@ -86,22 +102,93 @@ namespace UiDVDCatalogo
         {
             PropertyChangedEventHandler manejador = PropertyChanged;
             if (manejador != null)
-            { 
-                manejador(this,new PropertyChangedEventArgs(propiedad));
+            {
+                manejador(this, new PropertyChangedEventArgs(propiedad));
             }
         }
         #endregion
         #region Commands
+        private void LeerTodosDvD()
+        {
+            if (TipoConexion)
+            {
+                Listado = _dao.Seleccionar(null);
+                
+            }
+            else
+            {
+                Listado = _dao.Seleccionar(null);
+            }
+            Mensaje = "Datos obtenidos";
+        }
+
         private void ConectarBD()
         {
-            _dao = null;
-            if (TipoConexion) //MySQl
+            try
             {
+                _dao = null;
+                if (TipoConexion) //MySQl
+                {
+                    _dao = new DaoDvdMysql();
+                    _dao.Conectar(host, db, usr, pwd);
+                    Mensaje = "Conectado a la BD MysSQL /MariaDB";
+                   
+                    NotificarCambioDePropiedad("ColorConectar");
+                 
+                }
+                else //SQLite
+                {
+                    _dao = new DaoSQLite();
+                    _dao.Conectar(null, "catalogo.db", null, null);
+                    Mensaje = "Conectado a la BD SQLite";
+
+                    NotificarCambioDePropiedad("ColorConectar");
+                }
+            }
+            catch (Exception e)
+            {
+                Mensaje = e.Message; 
+                NotificarCambioDePropiedad("Conectado");
 
             }
-            else //SQLite
+            NotificarCambioDePropiedad("Conectado");
+        }
+        private void DesconectarBD()
+        {
+            try
+            {
+                _dao.Desconectar();
+                Mensaje = "Desconexion de la BD con éxito";
+                NotificarCambioDePropiedad("ColorConectar");
+                _listado = null;
+                NotificarCambioDePropiedad("Titulo");
+            }
+            catch
             { }
+            NotificarCambioDePropiedad("Conectado");
+        }
+        public ICommand ConectarBD_Click
+        {
+
+            get { return new RelayCommand(o => ConectarBD(), o => true); }
+
+
+        }
+        public ICommand DesconectarBD_Click
+        {
+
+            get { return new RelayCommand(o => DesconectarBD(), o => true); }
+
+
+        }
+        public ICommand LeerTodosDVD_Click
+        {
+
+            get { return new RelayCommand(o => LeerTodosDvD(), o => true); }
+
+
         }
         #endregion
     }
+
 }
