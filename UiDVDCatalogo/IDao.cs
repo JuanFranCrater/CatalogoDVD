@@ -12,7 +12,8 @@ namespace UiDVDCatalogo
          DataTable SeleccionarTB(string codigo);
          ObservableCollection<Dvd> Seleccionar(string codigo);
          void Insertar();
-         void Actualizar();
-         int Borrar(string codigo);
+         int Actualizar(Dvd unDVD);
+         int Borrar(Dvd unDVD);
+         Pais SeleccionarPais(string iso2);
     }
 }

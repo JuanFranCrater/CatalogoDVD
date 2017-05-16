@@ -181,20 +181,28 @@ namespace CatalogoDVD
         {
         }
 
-        public void Actualizar()
+        public int Actualizar(Dvd unDVD)
         {
+            string orden;
+            if (unDVD != null)
+            {
+                orden = "update dvd set titulo = '" + unDVD.Titulo + "',artista = '" + unDVD.Artista + "', precio= '" + unDVD.Precio + "', compania = '" + unDVD.Compania + "', anio= '" + unDVD.Anio + "+' where codigo = " + unDVD.Codigo;
+                MySqlCommand cmd = new MySqlCommand(orden, conexion);
+                return cmd.ExecuteNonQuery();
+            }
+            return -1;
         }
         /// <summary>
         /// Borrado de filas de la tabla DVD
         /// </summary>
         /// <param name="codigo">Clave de fila a eliminar</param>
         /// <returns>n= numero de filas aceptadas, n=-1 parametro pasado null, no valido</returns>
-        public int Borrar(string codigo)
+        public int Borrar(Dvd unDVD)
         {
             string orden;
-            if (codigo != null)
+            if (unDVD != null)
             {
-                orden = "delete from dvd where codigo = '" + codigo + "'";
+                orden = "delete from dvd where codigo = '" + unDVD.Codigo + "'";
                 MySqlCommand cmd = new MySqlCommand(orden, conexion);
                 return cmd.ExecuteNonQuery();
             }
@@ -203,5 +211,40 @@ namespace CatalogoDVD
         public void BorrarPA()
         {
         }
+
+
+        public Pais SeleccionarPais(string iso2)
+        {
+             Pais resultado = new Pais();
+
+            string orden;
+            if (iso2 != null)
+            {
+                orden = "select nombre from pais where iso2 ='" + iso2 + "'";
+
+
+
+                MySqlCommand cmd = new MySqlCommand(orden, conexion);
+
+                try
+                {
+
+                    object salida = cmd.ExecuteScalar();
+
+                    if (salida != null)
+                    {
+                        resultado.Iso2 = iso2;
+                        resultado.Nombre = salida.ToString();
+                    }
+
+
+                }
+                catch (MySqlException)
+                {
+                    throw new Exception("No tiene permisos para ejecutar esta orden");
+                }
+            }
+                return resultado;
+            }
+        }
     }
-}

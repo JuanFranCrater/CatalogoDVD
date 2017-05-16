@@ -18,8 +18,21 @@ namespace UiDVDCatalogo
         bool _tipoConexion = true; //MySql - true , Sqlite -false
 
         ObservableCollection<Dvd> _listado;
-
+        Dvd _dvd;
         string _mensaje;
+        string _nombrePais = "No data";
+
+        public string NombrePais
+        {
+            get { return _nombrePais; }
+            set {
+                if (_nombrePais != value)
+                {
+                    _nombrePais = value;
+                    NotificarCambioDePropiedad("NombrePais");
+                }
+            }
+        }
 
         static string host = "localhost";
         static string db = "catalogo";
@@ -28,6 +41,29 @@ namespace UiDVDCatalogo
 
         #endregion
         #region Propiedades
+        public Dvd DvdSeleccionado
+        {
+            get { return _dvd; }
+            set {
+
+                if (_dvd != value)
+                {
+
+                    _dvd = value;
+                    if (_dao.Conectado() && _dvd != null)
+                        NombrePais = _dao.SeleccionarPais(_dvd.Pais).Nombre;
+                    else
+                        NombrePais = "sin identificar";
+                    NotificarCambioDePropiedad("DvdSeleccionadoNoNulo");
+                }
+            }
+        }
+
+        public bool DvdSeleccionadoNoNulo
+        {
+            get { return DvdSeleccionado != null; }
+        }
+
         public bool TipoConexion
         {
             get { return _tipoConexion; }
@@ -167,6 +203,31 @@ namespace UiDVDCatalogo
             { }
             NotificarCambioDePropiedad("Conectado");
         }
+        private void BorrarDVD()
+        { 
+            if(_dao.Borrar(DvdSeleccionado) == 1)
+            {
+                Mensaje = "Dvd eliminado correctamente";
+            }
+            else
+            {
+                Mensaje = "Error al intentar eliminar el DVD";
+            }
+        }
+        private void ActualizarDVD()
+        {
+            if (DvdSeleccionado != null)
+            {
+                if (_dao.Actualizar(DvdSeleccionado) == 1)
+                {
+                    Mensaje = "Dvd actualizado correctamente";
+                }
+                else
+                {
+                    Mensaje = "Error al intentar actualizar el DVD";
+                }
+            }
+        }
         public ICommand ConectarBD_Click
         {
 
@@ -186,6 +247,17 @@ namespace UiDVDCatalogo
 
             get { return new RelayCommand(o => LeerTodosDvD(), o => true); }
 
+        }
+        public ICommand BorrarClick
+        {
+
+            get { return new RelayCommand(o => BorrarDVD(), o => true); }
+
+        }
+        public ICommand ActualizarClick
+        {
+
+            get { return new RelayCommand(o => ActualizarDVD(), o => true); }
 
         }
         #endregion

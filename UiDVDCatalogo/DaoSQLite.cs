@@ -12,7 +12,7 @@ namespace UiDVDCatalogo
         private SQLiteConnection conexion;
         public bool Conectar(string srv, string db, string user, string pwd)
         {
-            string cadenaConexion = "Data Source" + db + ";Version=3;" + "FailfMissing=true;";
+            string cadenaConexion = "Data Source=" + db + ";Version=3;" + "FailfMissing=true;";
             try
             {
                 conexion = new SQLiteConnection(cadenaConexion);
@@ -81,8 +81,6 @@ namespace UiDVDCatalogo
             {
                 SQLiteDataReader lector = cmd.ExecuteReader();
 
-
-
                 while (lector.Read())
                 {
                     Dvd undvd = new Dvd();
@@ -91,7 +89,9 @@ namespace UiDVDCatalogo
                     undvd.Artista = lector["artista"].ToString();
                     undvd.Pais = lector["pais"].ToString();
                     undvd.Compania = lector["compania"].ToString();
-                    undvd.Precio = double.Parse(lector["precio"].ToString());
+                    if (lector["precio"] != null)
+                   undvd.Precio=double.Parse(lector["precio"].ToString());
+                    if(lector["anio"] != null)
                     undvd.Anio = lector["anio"].ToString();
 
                     resultado.Add(undvd);
@@ -106,19 +106,68 @@ namespace UiDVDCatalogo
             }
         }
 
+
+        public Pais SeleccionarPais(string iso2)
+        {
+            Pais resultado = new Pais();
+
+            string orden;
+            if (iso2 != null)
+            {
+                orden = "select nombre from pais where iso2 ='" + iso2 + "'";
+
+
+
+                SQLiteCommand cmd = new SQLiteCommand(orden, conexion);
+
+                try
+                {
+
+                    object salida = cmd.ExecuteScalar();
+
+                    if (salida != null)
+                    {
+                        resultado.Iso2 = iso2;
+                        resultado.Nombre = salida.ToString();
+                    }
+
+
+                }
+                catch (SQLiteException)
+                {
+                    throw new Exception("No tiene permisos para ejecutar esta orden");
+                }
+            }
+
+            return resultado;
+        }
         public void Insertar()
         {
             throw new NotImplementedException();
         }
 
-        public void Actualizar()
+        public int Actualizar(Dvd unDVD)
         {
-            throw new NotImplementedException();
+            string orden;
+            if (unDVD != null)
+            { 
+                orden = "update dvd set titulo = '"+unDVD.Titulo +"',artista = '"+ unDVD.Artista+"', precio= '"+unDVD.Precio+"', compania = '"+unDVD.Compania+"', anio= '"+unDVD.Anio+"+' where codigo = "+unDVD.Codigo;
+                SQLiteCommand cmd = new SQLiteCommand(orden, conexion);
+                return cmd.ExecuteNonQuery();
+            }
+            return -1;
         }
 
-        public int Borrar(string codigo)
+        public int Borrar(Dvd unDvd)
         {
-            throw new NotImplementedException();
+            string orden;
+            if (unDvd != null)
+            {
+                orden = "delete from dvd where codigo = '" + unDvd.Codigo + "'";
+                SQLiteCommand cmd = new SQLiteCommand(orden, conexion);
+                return cmd.ExecuteNonQuery();
+            }
+            return -1;
         }
     }
 }
