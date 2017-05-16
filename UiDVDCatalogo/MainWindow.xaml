@@ -25,7 +25,7 @@
         </Menu>
         <Grid Height="332">
             <RadioButton GroupName="bd" Margin="10,0,903,270" Content="SQLite" IsChecked="False" Height="22" VerticalAlignment="Bottom"  />
-            <DataGrid x:Name="dgtabla" Width="600" Height="300"  AutoGenerateColumns="False" HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="100,10,0,0" BeginningEdit="IntentoEditar" ItemsSource="{Binding Listado}" SelectedItem="{Binding DvdSeleccionado}" SelectionMode="Single"/>
+            <DataGrid x:Name="dgtabla" Width="600" Height="300"  AutoGenerateColumns="True" HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="100,10,0,0" BeginningEdit="IntentoEditar" ItemsSource="{Binding Listado}" SelectedItem="{Binding DvdSeleccionado}" SelectionMode="Single"/>
             <Button x:Name="btnConectarDesconectar" Content="Conectar" HorizontalAlignment="Left" Margin="10,14,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.382,0.361" Click="Conectar" Command="{Binding ConectarBD_Click, Mode=OneWay}"/>
             <Button x:Name="btnListar" Content="Listar DVDs" HorizontalAlignment="Left" Margin="10,83,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.382,0.361" Click="ListarDVD" IsEnabled="{Binding Conectado, Mode=OneWay}" Command="{Binding LeerTodosDVD_Click, Mode=OneWay}"/>
             <RadioButton  GroupName="bd" Margin="10,63,903,247" Content="Mysql" IsChecked="{Binding TipoConexion}"  />
